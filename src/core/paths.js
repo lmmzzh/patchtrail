@@ -4,8 +4,10 @@ export const GUARD_DIR = ".zzh-mobile-ai-guard";
 export const RULES_FILE = "rules.yml";
 export const BASELINES_DIR = "baselines";
 export const REPORTS_DIR = "reports";
+export const HANDOFFS_DIR = "handoffs";
 export const LATEST_BASELINE = "latest.json";
 export const LATEST_CHECK = "latest-check.json";
+export const LATEST_HANDOFF = "latest-handoff.md";
 
 export function guardPath(root, ...parts) {
   return path.join(root, GUARD_DIR, ...parts);

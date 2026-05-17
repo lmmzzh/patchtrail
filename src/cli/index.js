@@ -1,6 +1,7 @@
 import { runInit } from "../core/config.js";
 import { runStart } from "../core/baseline.js";
 import { runCheck } from "../core/check.js";
+import { runHandoff } from "../core/handoff.js";
 import { showReport } from "../core/report.js";
 import { showStatus } from "../core/status.js";
 import { VERSION } from "../core/version.js";
@@ -15,6 +16,7 @@ Usage:
   zmg check     Check risk after AI changes code
   zmg check --strict
                 Fail when medium or high risk is found
+  zmg handoff   Generate a handoff from the latest check result
 
 Advanced:
   zmg report    Show the latest report path
@@ -26,7 +28,8 @@ Install once:
 First run:
   zmg init
   zmg start
-  zmg check`;
+  zmg check
+  zmg handoff`;
 
 export function runCli(args, cwd) {
   const command = args[0] ?? "--help";
@@ -42,6 +45,9 @@ export function runCli(args, cwd) {
         break;
       case "check":
         runCheck(cwd, parseCheckOptions(args.slice(1)));
+        break;
+      case "handoff":
+        runHandoff(cwd);
         break;
       case "report":
         showReport(cwd);

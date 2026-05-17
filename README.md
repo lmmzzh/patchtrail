@@ -9,6 +9,7 @@ npm install -g zzh-mobile-ai-guard
 zmg init
 zmg start
 zmg check
+zmg handoff
 ```
 
 ## Why
@@ -28,6 +29,7 @@ This tool does not prove business behavior is correct. It checks whether an AI c
 zmg init
 zmg start
 zmg check
+zmg handoff
 ```
 
 Advanced:
@@ -48,7 +50,7 @@ Option 1: ask the AI agent to run it:
 
 ```text
 Before changing code, run zmg start in the project root.
-After changing code, run zmg check and summarize the risks and report path.
+After changing code, run zmg check, then run zmg handoff and summarize the risks, verification items, and handoff path.
 ```
 
 Option 2: run it yourself in another terminal:
@@ -58,9 +60,10 @@ cd /path/to/your/project
 zmg start
 # let the AI change code
 zmg check
+zmg handoff
 ```
 
-`zmg start` and `zmg check` are terminal commands. They are not slash commands like `/start` or `/check`.
+`zmg start`, `zmg check`, and `zmg handoff` are terminal commands. They are not slash commands like `/start` or `/check`.
 
 For copyable prompts for Codex, Claude Code, Cursor, or other AI coding tools, see [docs/ai-usage.md](docs/ai-usage.md).
 
@@ -73,6 +76,7 @@ For local Git Hook setup, see [docs/integrations.md](docs/integrations.md).
   rules.yml
   baselines/
   reports/
+  handoffs/
 ```
 
 You can finish the first run without editing `rules.yml`.
@@ -92,6 +96,8 @@ You can finish the first run without editing `rules.yml`.
 ```
 
 The report always starts with a conclusion, then lists changed files, risks, manual verification items, and suggested next steps.
+
+Run `zmg handoff` after `zmg check` when you want a short Markdown handoff for the next agent or future you. The handoff points back to the latest check report, lists the changed scope, risks, manual verification items, and open questions. It still does not prove the project builds or the business behavior is correct.
 
 ## License
 

@@ -9,14 +9,17 @@ Before changing code, run zmg start in the project root.
 
 After changing code, run zmg check.
 
+After zmg check, run zmg handoff.
+
 If zmg check reports risks, explain:
 1. Which risks belong to the current task.
 2. Which risks may be accidental changes.
 3. Which files need manual verification.
 4. Where the full report is located.
+5. Where the handoff is located.
 
 Do not treat a passing zmg check as proof that the project builds or the business behavior is correct.
-After zmg check, still explain what should be compiled, tested, or manually verified.
+After zmg check and zmg handoff, still explain what should be compiled, tested, or manually verified.
 ```
 
 ## Recommended local flow
@@ -25,6 +28,7 @@ After zmg check, still explain what should be compiled, tested, or manually veri
 zmg start
 # let the AI change code
 zmg check
+zmg handoff
 ```
 
 Use strict mode only when you want the command to fail on medium or high risk:
@@ -33,5 +37,4 @@ Use strict mode only when you want the command to fail on medium or high risk:
 zmg check --strict
 ```
 
-`zmg` checks change risk. It does not replace builds, tests, or real-device verification.
-
+`zmg check` checks change risk. `zmg handoff` turns the latest check result into a short Markdown handoff for the next agent or future you. Neither command replaces builds, tests, or real-device verification.
