@@ -9,6 +9,7 @@ import { scanFiles, readTextIfAvailable } from "./files.js";
 import { matchesAny } from "./glob.js";
 import { renderMarkdownReport } from "./report.js";
 import { enrichRisk } from "./risk-explanations.js";
+import { currentTask } from "./task.js";
 import { VERSION } from "./version.js";
 
 export function runCheck(root, options = {}) {
@@ -30,6 +31,7 @@ export function runCheck(root, options = {}) {
   const severity = highestSeverity(risks);
   const pass = severity !== "high" && severity !== "medium";
   const manualVerification = verificationSuggestions(changedFiles, rules);
+  const task = currentTask(root);
   const timestamp = timestampForFile();
   const reportPath = guardPath(root, REPORTS_DIR, `${timestamp}-check.md`);
   const result = {
@@ -45,6 +47,13 @@ export function runCheck(root, options = {}) {
     stats,
     risks,
     manual_verification: manualVerification,
+    ...(task ? {
+      task: {
+        id: task.id,
+        goal: task.goal,
+        task_dir: task.taskDir
+      }
+    } : {}),
     report_path: path.relative(root, reportPath).split(path.sep).join("/")
   };
 

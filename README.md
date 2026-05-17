@@ -7,9 +7,10 @@ Install once, run `start` before AI changes code, then run `check` after. It tel
 ```bash
 npm install -g zzh-mobile-ai-guard
 zmg init
-zmg start
+zmg task start --goal "Describe the change"
 zmg check
 zmg handoff
+zmg task close
 ```
 
 ## Why
@@ -30,6 +31,16 @@ zmg init
 zmg start
 zmg check
 zmg handoff
+```
+
+Task flow:
+
+```bash
+zmg task start --goal "Describe the change"
+# let the AI change code
+zmg check
+zmg handoff
+zmg task close
 ```
 
 Advanced:
@@ -63,6 +74,16 @@ zmg check
 zmg handoff
 ```
 
+If you want the next agent to understand the task goal, start with a task:
+
+```bash
+zmg task start --goal "Describe the change"
+# let the AI change code
+zmg check
+zmg handoff
+zmg task close
+```
+
 `zmg start`, `zmg check`, and `zmg handoff` are terminal commands. They are not slash commands like `/start` or `/check`.
 
 For copyable prompts for Codex, Claude Code, Cursor, or other AI coding tools, see [docs/ai-usage.md](docs/ai-usage.md).
@@ -77,6 +98,7 @@ For local Git Hook setup, see [docs/integrations.md](docs/integrations.md).
   baselines/
   reports/
   handoffs/
+  tasks/
 ```
 
 You can finish the first run without editing `rules.yml`.
@@ -98,6 +120,8 @@ You can finish the first run without editing `rules.yml`.
 The report always starts with a conclusion, then lists changed files, risks, manual verification items, and suggested next steps.
 
 Run `zmg handoff` after `zmg check` when you want a short Markdown handoff for the next agent or future you. The handoff points back to the latest check report, lists the changed scope, risks, manual verification items, and open questions. It still does not prove the project builds or the business behavior is correct.
+
+Run `zmg task start --goal "..."` when you want the check report and handoff to include the task goal. `zmg task close` saves the task handoff under `.zzh-mobile-ai-guard/tasks/` and clears the current active task.
 
 ## License
 

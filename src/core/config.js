@@ -16,7 +16,7 @@ export function runInit(root) {
 
   const localGitIgnore = guardPath(root, ".gitignore");
   if (!exists(localGitIgnore)) {
-    fs.writeFileSync(localGitIgnore, "baselines/\nreports/\nhandoffs/\nlatest-check.json\nlatest-handoff.md\n", "utf8");
+    fs.writeFileSync(localGitIgnore, "baselines/\nreports/\nhandoffs/\ntasks/\nlatest-check.json\nlatest-handoff.md\n", "utf8");
   }
 
   if (!exists(rulesPath)) {
@@ -29,6 +29,7 @@ export function runInit(root) {
   console.log("");
   console.log("下一步：");
   console.log("AI 改代码前运行：zmg start");
+  console.log("或开始一个任务：zmg task start --goal \"...\"");
   console.log("AI 改代码后运行：zmg check");
   console.log("生成交接文档运行：zmg handoff");
 }

@@ -4,6 +4,7 @@ import { runCheck } from "../core/check.js";
 import { runHandoff } from "../core/handoff.js";
 import { showReport } from "../core/report.js";
 import { showStatus } from "../core/status.js";
+import { runTaskClose, runTaskStart } from "../core/task.js";
 import { VERSION } from "../core/version.js";
 
 const HELP_TEXT = `zzh-mobile-ai-guard
@@ -17,6 +18,10 @@ Usage:
   zmg check --strict
                 Fail when medium or high risk is found
   zmg handoff   Generate a handoff from the latest check result
+  zmg task start --goal "..."
+                Start a task and record a baseline
+  zmg task close
+                Close the current task with a handoff
 
 Advanced:
   zmg report    Show the latest report path
@@ -27,9 +32,10 @@ Install once:
 
 First run:
   zmg init
-  zmg start
+  zmg task start --goal "Describe the change"
   zmg check
-  zmg handoff`;
+  zmg handoff
+  zmg task close`;
 
 export function runCli(args, cwd) {
   const command = args[0] ?? "--help";
@@ -48,6 +54,9 @@ export function runCli(args, cwd) {
         break;
       case "handoff":
         runHandoff(cwd);
+        break;
+      case "task":
+        runTaskCommand(cwd, args.slice(1));
         break;
       case "report":
         showReport(cwd);
@@ -75,6 +84,21 @@ export function runCli(args, cwd) {
     console.error("zzh-mobile-ai-guard 运行失败");
     console.error(error instanceof Error ? error.message : String(error));
     process.exitCode = 2;
+  }
+}
+
+function runTaskCommand(cwd, args) {
+  const subcommand = args[0];
+
+  switch (subcommand) {
+    case "start":
+      runTaskStart(cwd, args.slice(1));
+      break;
+    case "close":
+      runTaskClose(cwd);
+      break;
+    default:
+      throw new Error(`不支持的 task 命令：${subcommand || ""}`);
   }
 }
 

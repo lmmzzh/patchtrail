@@ -7,9 +7,10 @@
 ```bash
 npm install -g zzh-mobile-ai-guard
 zmg init
-zmg start
+zmg task start --goal "描述这次改动"
 zmg check
 zmg handoff
+zmg task close
 ```
 
 ## 它解决什么问题
@@ -31,6 +32,16 @@ zmg init
 zmg start
 zmg check
 zmg handoff
+```
+
+任务流程：
+
+```bash
+zmg task start --goal "描述这次改动"
+# 让 AI 开始改代码
+zmg check
+zmg handoff
+zmg task close
 ```
 
 高级命令：
@@ -64,6 +75,16 @@ zmg check
 zmg handoff
 ```
 
+如果你希望下一轮 agent 能看到本轮任务目标，可以从 task 开始：
+
+```bash
+zmg task start --goal "描述这次改动"
+# 让 AI 开始改代码
+zmg check
+zmg handoff
+zmg task close
+```
+
 `zmg start`、`zmg check` 和 `zmg handoff` 是终端命令，不是 Codex / Claude Code / Cursor 里的 `/start` 或 `/check`。
 
 如果你想让 Codex / Claude Code / Cursor 自动配合使用，可以复制 [docs/ai-usage.zh-CN.md](docs/ai-usage.zh-CN.md) 里的提示词。
@@ -78,6 +99,7 @@ zmg handoff
   baselines/
   reports/
   handoffs/
+  tasks/
 ```
 
 第一次使用不需要先改 `rules.yml`。
@@ -99,6 +121,8 @@ zmg handoff
 报告会先给结论，再列出改动范围、风险项、建议人工验证项和下一步建议。
 
 如果你希望下一轮 agent 或未来的自己更容易接手，可以在 `zmg check` 后运行 `zmg handoff`。它会基于最近一次检查结果生成一份 Markdown 交接文档，列出改动范围、风险项、人工验证项、下一轮应该先读哪里，以及仍需确认的问题。它同样不代表项目已经编译通过，也不代表业务功能正确。
+
+如果你希望检查报告和交接文档里带上本轮任务目标，可以使用 `zmg task start --goal "..."`。`zmg task close` 会把任务交接文档保存到 `.zzh-mobile-ai-guard/tasks/`，并清理当前 active task。
 
 ## License
 

@@ -6,7 +6,7 @@ import { loadRules } from "./config.js";
 import { scanFiles } from "./files.js";
 import { VERSION } from "./version.js";
 
-export function runStart(root) {
+export function runStart(root, options = {}) {
   const rules = loadRules(root);
   const baseline = {
     tool: "zzh-mobile-ai-guard",
@@ -25,12 +25,14 @@ export function runStart(root) {
   writeJson(guardPath(root, BASELINES_DIR, `${timestamp}.json`), baseline);
   writeJson(guardPath(root, BASELINES_DIR, LATEST_BASELINE), baseline);
 
-  console.log("已记录当前项目状态。");
-  console.log("");
-  console.log("现在可以让 AI 开始改代码。");
-  console.log("");
-  console.log("改完后运行：");
-  console.log("zmg check");
+  if (!options.quiet) {
+    console.log("已记录当前项目状态。");
+    console.log("");
+    console.log("现在可以让 AI 开始改代码。");
+    console.log("");
+    console.log("改完后运行：");
+    console.log("zmg check");
+  }
 }
 
 export function timestampForFile() {

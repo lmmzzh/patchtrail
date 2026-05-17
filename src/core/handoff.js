@@ -25,6 +25,11 @@ export function runHandoff(root) {
   console.log("");
   console.log(`交接文档：${relativePath(root, handoffPath)}`);
   console.log(`最近交接：${relativePath(root, latestHandoffPath)}`);
+
+  return {
+    handoff_path: relativePath(root, handoffPath),
+    latest_handoff_path: relativePath(root, latestHandoffPath)
+  };
 }
 
 export function renderMarkdownHandoff(result) {
@@ -32,14 +37,29 @@ export function renderMarkdownHandoff(result) {
 
   lines.push("# ZZH Mobile AI Guard Handoff");
   lines.push("");
-  lines.push("## 1. Session Conclusion");
+  let section = 1;
+
+  if (result.task?.goal) {
+    lines.push(`## ${section}. Task Goal`);
+    lines.push("");
+    lines.push(result.task.goal);
+    lines.push("");
+    if (result.task.task_dir) {
+      lines.push(`- Task directory: ${result.task.task_dir}`);
+      lines.push("");
+    }
+    section += 1;
+  }
+
+  lines.push(`## ${section}. Session Conclusion`);
   lines.push("");
   lines.push(result.summary || "No summary was recorded.");
   lines.push("");
   lines.push("> This handoff is generated from zmg check.");
   lines.push("> It does not prove the project builds or the business behavior is correct.");
   lines.push("");
-  lines.push("## 2. Changed Scope");
+  section += 1;
+  lines.push(`## ${section}. Changed Scope`);
   lines.push("");
   lines.push(`- Changed files: ${result.stats?.changed_files ?? 0}`);
   lines.push(`- Added lines: ${result.stats?.added_lines ?? 0}`);
@@ -49,15 +69,18 @@ export function renderMarkdownHandoff(result) {
   lines.push("");
   appendList(lines, result.changed_files, "No changed files were recorded.");
   lines.push("");
-  lines.push("## 3. Risks To Review");
+  section += 1;
+  lines.push(`## ${section}. Risks To Review`);
   lines.push("");
   appendRisks(lines, result.risks ?? []);
   lines.push("");
-  lines.push("## 4. Manual Verification");
+  section += 1;
+  lines.push(`## ${section}. Manual Verification`);
   lines.push("");
   appendList(lines, result.manual_verification, "No manual verification item was recorded.");
   lines.push("");
-  lines.push("## 5. Next Agent Should Read");
+  section += 1;
+  lines.push(`## ${section}. Next Agent Should Read`);
   lines.push("");
   if (result.report_path) {
     lines.push(`- Latest check report: ${result.report_path}`);
@@ -67,7 +90,8 @@ export function renderMarkdownHandoff(result) {
   lines.push("- Review the risk files above before making more changes.");
   lines.push("- Compile, test, or manually verify the affected mobile flow before trusting this change.");
   lines.push("");
-  lines.push("## 6. Open Questions");
+  section += 1;
+  lines.push(`## ${section}. Open Questions`);
   lines.push("");
   lines.push("- Confirm whether high or medium risks belong to the current task.");
   lines.push("- Confirm manual verification results before trusting this change.");
