@@ -1,8 +1,10 @@
-# zzh-mobile-ai-guard
+# PatchTrail
 
-`zzh-mobile-ai-guard` helps AI coding agents avoid unsafe changes in iOS and Flutter projects.
+PatchTrail leaves a readable trail for AI coding sessions in iOS and Flutter projects.
 
-Install once, run `start` before AI changes code, then run `check` after. It tells you whether the change is safe to continue, what needs attention, and what to verify manually.
+The npm package is currently published as `zzh-mobile-ai-guard`, and the CLI command is `zmg`.
+
+Install once, start a task before AI changes code, then run `check` and `handoff` after. PatchTrail helps future agents understand what changed, why the task started, where the risk is, and what still needs manual verification.
 
 ```bash
 npm install -g zzh-mobile-ai-guard
@@ -22,7 +24,7 @@ AI coding agents can move fast, but mobile projects have risky files and flows:
 - payment, subscription, login, FaceScan, history, result pages
 - temporary mock, bypass, debug, or force-unlock code
 
-This tool does not prove business behavior is correct. It checks whether an AI coding session changed risky areas and generates a human-readable report.
+PatchTrail does not prove business behavior is correct. It checks whether an AI coding session changed risky areas and generates a human-readable trail for the next agent or future you.
 
 ## Commands
 

@@ -1,7 +1,7 @@
 {
   "name": "zzh-mobile-ai-guard",
   "version": "0.2.0",
-  "description": "A lightweight AI coding guard for iOS and Flutter projects.",
+  "description": "PatchTrail leaves a readable trail for AI coding sessions in iOS and Flutter projects.",
   "type": "module",
   "bin": {
     "zmg": "bin/zmg.js",
@@ -27,7 +27,9 @@
     "flutter",
     "cli",
     "code-review",
-    "guardrails"
+    "guardrails",
+    "handoff",
+    "patchtrail"
   ],
   "author": "mq09",
   "license": "MIT",

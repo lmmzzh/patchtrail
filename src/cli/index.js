@@ -7,7 +7,9 @@ import { showStatus } from "../core/status.js";
 import { runTaskClose, runTaskStart } from "../core/task.js";
 import { VERSION } from "../core/version.js";
 
-const HELP_TEXT = `zzh-mobile-ai-guard
+const HELP_TEXT = `PatchTrail
+
+Package: zzh-mobile-ai-guard
 
 Daily command: zmg
 
