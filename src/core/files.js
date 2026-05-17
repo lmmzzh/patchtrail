@@ -5,7 +5,7 @@ import { relativePosix } from "./paths.js";
 
 const IGNORED_DIRS = new Set([
   ".git",
-  ".zzh-mobile-ai-guard",
+  ".patchtrail",
   "node_modules",
   "Pods",
   "build",

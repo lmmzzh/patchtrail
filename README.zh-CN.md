@@ -96,7 +96,7 @@ zmg task close
 ## 接入后会生成什么
 
 ```text
-.zzh-mobile-ai-guard/
+.patchtrail/
   rules.yml
   baselines/
   reports/
@@ -117,14 +117,14 @@ zmg task close
 未发现明显结构风险。
 注意：这不代表业务功能已经验证通过。
 
-完整报告：.zzh-mobile-ai-guard/reports/2026-04-29T04-51-09-253Z-check.md
+完整报告：.patchtrail/reports/2026-04-29T04-51-09-253Z-check.md
 ```
 
 报告会先给结论，再列出改动范围、风险项、建议人工验证项和下一步建议。
 
 如果你希望下一轮 agent 或未来的自己更容易接手，可以在 `zmg check` 后运行 `zmg handoff`。它会基于最近一次检查结果生成一份 Markdown 交接文档，列出改动范围、风险项、人工验证项、下一轮应该先读哪里，以及仍需确认的问题。它同样不代表项目已经编译通过，也不代表业务功能正确。
 
-如果你希望检查报告和交接文档里带上本轮任务目标，可以使用 `zmg task start --goal "..."`。`zmg task close` 会把任务交接文档保存到 `.zzh-mobile-ai-guard/tasks/`，并清理当前 active task。
+如果你希望检查报告和交接文档里带上本轮任务目标，可以使用 `zmg task start --goal "..."`。`zmg task close` 会把任务交接文档保存到 `.patchtrail/tasks/`，并清理当前 active task。
 
 ## License
 

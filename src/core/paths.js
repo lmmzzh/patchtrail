@@ -1,6 +1,6 @@
 import path from "node:path";
 
-export const GUARD_DIR = ".zzh-mobile-ai-guard";
+export const GUARD_DIR = ".patchtrail";
 export const RULES_FILE = "rules.yml";
 export const BASELINES_DIR = "baselines";
 export const REPORTS_DIR = "reports";

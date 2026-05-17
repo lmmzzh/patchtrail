@@ -61,5 +61,5 @@ function lines(output) {
 }
 
 function shouldReportChangedFile(file) {
-  return !file.startsWith(".zzh-mobile-ai-guard/");
+  return !file.startsWith(".patchtrail/");
 }

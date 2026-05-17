@@ -4,7 +4,7 @@ import { defaultMobileRules } from "./mobile-rules.js";
 
 const IGNORED_DIRS = new Set([
   ".git",
-  ".zzh-mobile-ai-guard",
+  ".patchtrail",
   "node_modules",
   "Pods",
   "build",

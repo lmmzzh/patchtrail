@@ -95,7 +95,7 @@ For local Git Hook setup, see [docs/integrations.md](docs/integrations.md).
 ## What it creates
 
 ```text
-.zzh-mobile-ai-guard/
+.patchtrail/
   rules.yml
   baselines/
   reports/
@@ -116,14 +116,14 @@ You can finish the first run without editing `rules.yml`.
 未发现明显结构风险。
 注意：这不代表业务功能已经验证通过。
 
-完整报告：.zzh-mobile-ai-guard/reports/2026-04-29T04-51-09-253Z-check.md
+完整报告：.patchtrail/reports/2026-04-29T04-51-09-253Z-check.md
 ```
 
 The report always starts with a conclusion, then lists changed files, risks, manual verification items, and suggested next steps.
 
 Run `zmg handoff` after `zmg check` when you want a short Markdown handoff for the next agent or future you. The handoff points back to the latest check report, lists the changed scope, risks, manual verification items, and open questions. It still does not prove the project builds or the business behavior is correct.
 
-Run `zmg task start --goal "..."` when you want the check report and handoff to include the task goal. `zmg task close` saves the task handoff under `.zzh-mobile-ai-guard/tasks/` and clears the current active task.
+Run `zmg task start --goal "..."` when you want the check report and handoff to include the task goal. `zmg task close` saves the task handoff under `.patchtrail/tasks/` and clears the current active task.
 
 ## License
 
