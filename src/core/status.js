@@ -6,7 +6,7 @@ export function showStatus(root) {
   const hasBaseline = exists(guardPath(root, BASELINES_DIR, LATEST_BASELINE));
   const hasCheck = exists(guardPath(root, LATEST_CHECK));
 
-  console.log("zzh-mobile-ai-guard 状态");
+  console.log("PatchTrail 状态");
   console.log("");
   console.log(`已接入项目：${hasRules ? "是" : "否"}`);
   console.log(`已运行 start：${hasBaseline ? "是" : "否"}`);

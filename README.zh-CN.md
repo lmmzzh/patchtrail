@@ -2,12 +2,12 @@
 
 PatchTrail 的意思是“代码变更轨迹”。它是一个面向 iOS / Flutter 项目的 AI 编程辅助工具，帮助每一轮 AI 改代码留下可读的工作痕迹。
 
-当前 npm 包名仍然是 `zzh-mobile-ai-guard`，CLI 命令仍然是 `zmg`。
+当前 npm 包名是 `patchtrail`，CLI 命令仍然是 `zmg`。
 
 先安装一次，再用短命令接入。AI 改代码前先开始一个任务，改完后运行 `check` 和 `handoff`。PatchTrail 会告诉你这轮改动能不能继续、哪里有风险、需要人工验证什么，也让下一轮 agent 或未来的自己更容易接手。
 
 ```bash
-npm install -g zzh-mobile-ai-guard
+npm install -g patchtrail
 zmg init
 zmg task start --goal "描述这次改动"
 zmg check

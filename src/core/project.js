@@ -69,7 +69,7 @@ export function renderRulesYaml(rules) {
   const quote = (value) => JSON.stringify(value);
   const lines = [];
 
-  lines.push("# zzh-mobile-ai-guard rules");
+  lines.push("# PatchTrail rules");
   lines.push("# You can use zmg init -> zmg start -> zmg check without editing this file.");
   lines.push("");
   lines.push("project:");

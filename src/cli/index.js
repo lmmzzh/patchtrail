@@ -9,7 +9,7 @@ import { VERSION } from "../core/version.js";
 
 const HELP_TEXT = `PatchTrail
 
-Package: zzh-mobile-ai-guard
+Package: patchtrail
 
 Daily command: zmg
 
@@ -30,7 +30,7 @@ Advanced:
   zmg status    Show current guard state
 
 Install once:
-  npm install -g zzh-mobile-ai-guard
+  npm install -g patchtrail
 
 First run:
   zmg init
@@ -83,7 +83,7 @@ export function runCli(args, cwd) {
     }
   } catch (error) {
     console.error("");
-    console.error("zzh-mobile-ai-guard 运行失败");
+    console.error("PatchTrail 运行失败");
     console.error(error instanceof Error ? error.message : String(error));
     process.exitCode = 2;
   }

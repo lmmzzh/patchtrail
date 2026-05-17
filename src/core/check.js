@@ -35,7 +35,7 @@ export function runCheck(root, options = {}) {
   const timestamp = timestampForFile();
   const reportPath = guardPath(root, REPORTS_DIR, `${timestamp}-check.md`);
   const result = {
-    tool: "zzh-mobile-ai-guard",
+    tool: "patchtrail",
     version: VERSION,
     checkedAt: new Date().toISOString(),
     pass,

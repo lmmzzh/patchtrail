@@ -9,7 +9,7 @@ import { VERSION } from "./version.js";
 export function runStart(root, options = {}) {
   const rules = loadRules(root);
   const baseline = {
-    tool: "zzh-mobile-ai-guard",
+    tool: "patchtrail",
     version: VERSION,
     createdAt: new Date().toISOString(),
     rootName: path.basename(root),

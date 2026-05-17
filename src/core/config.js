@@ -23,7 +23,7 @@ export function runInit(root) {
     fs.writeFileSync(rulesPath, renderRulesYaml(rules), "utf8");
   }
 
-  console.log("zzh-mobile-ai-guard 已接入当前项目。");
+  console.log("PatchTrail 已接入当前项目。");
   console.log("");
   console.log(`项目类型：${project.type}`);
   console.log("");

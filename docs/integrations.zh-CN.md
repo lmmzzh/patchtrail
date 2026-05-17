@@ -1,6 +1,6 @@
 # 本地接入说明
 
-这份文档说明如何在本地开发流程里使用 `zzh-mobile-ai-guard`。
+这份文档说明如何在本地开发流程里使用 PatchTrail。
 
 当前版本暂时不做 CI。重点先放在本地 AI 改代码流程和本地提交前检查。
 
@@ -15,7 +15,7 @@ pre-commit 示例：
 set -e
 
 if ! command -v zmg >/dev/null 2>&1; then
-  echo "zmg is not installed. Run: npm install -g zzh-mobile-ai-guard"
+  echo "zmg is not installed. Run: npm install -g patchtrail"
   exit 1
 fi
 
@@ -37,4 +37,3 @@ zmg start
 ```
 
 这个 Hook 只做提交前风险检查，不替代编译、测试和真机验证。
-

@@ -1,6 +1,6 @@
 # Local integrations
 
-This page shows how to use `zzh-mobile-ai-guard` in local development.
+This page shows how to use PatchTrail in local development.
 
 CI is intentionally not covered in this version. The current focus is local AI coding sessions and local commit-time checks.
 
@@ -15,7 +15,7 @@ Example pre-commit hook:
 set -e
 
 if ! command -v zmg >/dev/null 2>&1; then
-  echo "zmg is not installed. Run: npm install -g zzh-mobile-ai-guard"
+  echo "zmg is not installed. Run: npm install -g patchtrail"
   exit 1
 fi
 
@@ -37,4 +37,3 @@ zmg start
 ```
 
 The hook only checks before commit. It does not replace builds, tests, or real-device verification.
-
